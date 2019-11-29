@@ -1,0 +1,44 @@
+{
+  "id": "1537699",
+  "name": "echong",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "745282",
+      "name": "分类",
+      "font_class": "icon04",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "809066",
+      "name": "book",
+      "font_class": "book",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3764364",
+      "name": "我的",
+      "font_class": "weibiaoti-",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "4954933",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "5025798",
+      "name": "猪",
+      "font_class": "zhu",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    }
+  ]
+}
