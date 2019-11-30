@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import {TabBarStyled} from "./styled";
 import {TabBarRoute} from "@/router";
-import {withRouter} from "react-router-dom"
-
-class TabBar extends React.Component{
+import {withRouter} from "react-router-dom";
+@withRouter
+class TabBar extends Component{
     render(){
         let {path} = this.props;
         return (
@@ -26,4 +26,4 @@ class TabBar extends React.Component{
     }
 }
 
-export default withRouter(TabBar);
+export default TabBar;
