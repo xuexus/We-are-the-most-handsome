@@ -5,7 +5,9 @@ import {
     Cart,
     Main,
     Login,
-    Register
+    Register,
+    ClassifyLeft,
+    ClassifyRight
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -25,7 +27,23 @@ export const TabBarRoute = [
             flag:true
         },
         text:"分类",
-        icon:"\ue601"
+        icon:"\ue601",
+        children:[
+            {
+                path:"/classify/classifyLeft",
+                component:ClassifyLeft,
+                meta:{
+                    flag:true
+                },
+            },
+            {
+                path:"/classify/classifyRight",
+                component:ClassifyRight,
+                meta:{
+                    flag:true
+                },
+            }
+        ]
     },
     {
         path:"/smallMBook",

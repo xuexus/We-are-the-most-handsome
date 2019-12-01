@@ -32,7 +32,7 @@ export default (routes) => {
     }
 
     function childrenMap(childNodes) {
-        return <Route path={childNodes.path} render={() => {
+        return <Route key={childNodes.path} path={childNodes.path} render={() => {
             return (
                 <Fragment>
                     <Route component={childNodes.component} />
@@ -42,13 +42,13 @@ export default (routes) => {
                                 if (child.children) {
                                     return childrenMap(child);
                                 } else {
-                                    return <Route path={child.path} render={() => {
+                                    return <Route key={child.path} path={child.path} render={() => {
                                         return isLogin(child)
                                     }} />
                                 }
                             })
                         }
-                        <Redirect from={childNodes.path} to={childNodes.children[0].path} />
+                        <Redirect from={childNodes.path} to={childNodes.children[1].path} />
                     </Switch>
                 </Fragment>
             )

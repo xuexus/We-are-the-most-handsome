@@ -4,10 +4,29 @@ module.exports = (app)=>{
     app.use("/v3",proxy({
         target:"https://mallcdn.api.epet.com",
         changeOrigin:true
+    })),
+    app.use("/classify",proxy({
+        target:"https://mallcdn.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/classify":""
+        }
+    })),
+    app.use("/classifyTwo",proxy({
+        target:"https://mallapi.epetht.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/classifyTwo":""
+        }
+    })),
+    app.use("/classifyRight",proxy({
+        target:"https://mallcdn.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/classifyRight":""
+        }
     }))
 }
-// /v3/goods/category/main.html?pet_type=dog&version=358&system=wap&isWeb=1&distinct_id=%C3%A6%C2%B8%C2%B8%C3%A5%C2%AE%C2%A2&_=1574997764896
-
 
 
 

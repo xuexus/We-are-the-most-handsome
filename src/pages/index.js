@@ -35,3 +35,13 @@ export const Register = Loadable({
     loader:()=>import("./register"),
     loading:Loading
 })
+
+export const ClassifyLeft = Loadable({
+    loader:()=>import("@/components/classifyLeft"),
+    loading:Loading
+})
+
+export const ClassifyRight = Loadable({
+    loader:()=>import("@/components/classifyRight"),
+    loading:Loading
+})
