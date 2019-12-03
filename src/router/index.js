@@ -40,7 +40,7 @@ export const TabBarRoute = [
         path:"/cart",
         component:Cart,
         meta:{
-            flag:true
+            flag:false
         },
         text:"购物车",
         icon:"\ue657"
