@@ -10,6 +10,7 @@ height:100%;
     padding-top:.333rem;
     background:#f3f4f5;
     position:relative;
+    overflow: hidden;
 }
 .classify_content_nav{
     width:75px;

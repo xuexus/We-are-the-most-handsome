@@ -45,7 +45,7 @@ class ClassifyLeft extends Component {
                                                 {
                                                     item.list.map((items) => {
                                                         return (
-                                                            <div className={items.id_param?'':'div'} key={items.id_param || items.target.param} onClick={this.handleToList.bind(this,items.id_param)}>
+                                                            <div className={items.id_param?'':'div'} key={items.id_param || items.target.param} onClick={this.handleToList.bind(this,items)}>
                                                                 <img className={items.photo?'smallImg':'bigImg'} src={items.photo || items.logo} alt="" />
                                                                 <p>{items.name}</p>
                                                             </div>
@@ -78,8 +78,12 @@ class ClassifyLeft extends Component {
         localStorage.setItem("cateid",item.cateid)
         this.props.handleClassifyLeftList(item.cateid)
     }
-    handleToList(id){
-        this.props.history.push("/goodList/"+(id.match(/\d+$/g)[0]))
+    handleToList(item){
+        if(item.id_param){
+            this.props.history.push("/goodList/"+(item.id_param.match(/\d+$/g)[0]))
+        }else{
+            this.props.history.push("/brand/"+item.target.param)
+        }
     }
 }
 export default ClassifyLeft;

@@ -39,6 +39,20 @@ module.exports = (app)=>{
         pathRewrite:{
             "^/goodList":""
         }
+    })),
+    app.use("/details",proxy({
+        target:"https://mall.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/details":""
+        }
+    })),
+    app.use("/brand",proxy({
+        target:"https://mall.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/brand":""
+        }
     }))
 }
 

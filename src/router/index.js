@@ -12,7 +12,9 @@ import {
     Collect,
     Appraisal,
     Video,
-    GoodList
+    GoodList,
+    Details,
+    Brand
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -141,6 +143,22 @@ export const NoTabBarRoute = [
             flag:false
         },
         text:"商品列表"
+    },
+    {
+        path:"/details/:gid/:sale_price/:market_price",
+        component:Details,
+        meta:{
+            flag:false
+        },
+        text:"商品详情"
+    },
+    {
+        path:"/brand/:gid",
+        component:Brand,
+        meta:{
+            flag:false
+        },
+        text:"品牌"
     }
 ]
 

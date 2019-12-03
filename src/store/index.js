@@ -4,11 +4,16 @@ import {composeWithDevTools} from "redux-devtools-extension"
 import classify from "./reducers/classify"
 import smallMBook from "./reducers/smallMBook"
 import goodList from "./reducers/goodList"
+import details from "./reducers/details"
+import brand from "./reducers/brand"
+
 
 const reducers = combineReducers({
     classify,
     smallMBook,
-    goodList
+    goodList,
+    details,
+    brand
 })
 
 const store = createStore(reducers,composeWithDevTools(applyMiddleware(reduxThunk)))

@@ -1,0 +1,1 @@
+export const BrandActionType = "BRAND_ACTION_TYPE"

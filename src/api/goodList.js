@@ -1,12 +1,12 @@
 import http from "@/utils/request";
 
-export const GoodListApi = (cateid)=>http.get({
+export const GoodListApi = (cateid,desc)=>http.get({
     url:"/goodList/v3/goods/list/main.html",
     data:{
         version:358,
         brandid:0,
         page:1,
-        orderby:"def_desc",
+        orderby:desc,
         cateid,
         pet_type:"dog",
         extend_pam:'',

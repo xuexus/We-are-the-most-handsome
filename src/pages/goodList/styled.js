@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const  GoodsListStyled = styled.div`
+height:100%;
     .goodsList{
         
         padding-top:50px;
@@ -60,6 +61,26 @@ export const  GoodsListStyled = styled.div`
                 color: #41C856;
             }
         }
+        .goodListDefault{
+            width:100%;
+            height:168px;
+            position:absolute;
+            top:43px;
+            left:0;
+            z-index:20;
+            background:#ff0;
+            p{
+                height:42px;
+                line-height:42px;
+                font-size: 14px;
+                background:#f5f5f5;
+                font-family: 'Microsoft Yahei',-apple-system-font,Helvetica Neue,sans-serif;
+                padding-left:10px;
+            }
+            .activeP{
+                background:#fff;
+            }
+        }
         i{
             width: 15px;   
             background: url("https://static.epetbar.com/static_wap/epetapp/pages/goods_list/images/brands-ico.png") no-repeat -164px -54px;
@@ -110,7 +131,7 @@ export const  GoodsListStyled = styled.div`
         width:100%;
         height:100%;
         box-sizing:border-box;
-        padding-left:100px;
+        padding-left:110px;
         h2{
             font-weight: 400;
             height: 32px;

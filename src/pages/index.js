@@ -70,3 +70,13 @@ export const GoodList = Loadable({
     loader:()=>import("./goodList"),
     loading:Loading
 })
+
+export const Details = Loadable({
+    loader:()=>import("./details"),
+    loading:Loading
+})
+
+export const Brand = Loadable({
+    loader:()=>import("./brand"),
+    loading:Loading
+})

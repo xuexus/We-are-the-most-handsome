@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { ClassifyRightStyled } from "./styled";
 import { mapStateToProps, mapDispatchToProps } from "./mapState";
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom"
 
-
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 class ClassifyRight extends Component {
     render() {
@@ -20,7 +21,7 @@ class ClassifyRight extends Component {
                                         {
                                             item.list.map((items) => {
                                                 return (
-                                                    <div className="classify_brands_list" key={items.brandid}>
+                                                    <div className="classify_brands_list" key={items.brandid} onClick={this.handleRight.bind(this,items.brandid)}>
                                                         <div className="classify_brands_img">
                                                             <img src={items.logo} alt="" />
                                                         </div>
@@ -48,6 +49,9 @@ class ClassifyRight extends Component {
         if(!localStorage.getItem("classifyRight")){
             this.props.handleClassifyRight()
         }
+    }
+    handleRight(gid){
+        this.props.history.push("/brand/"+gid);
     }
 }
 export default ClassifyRight;
