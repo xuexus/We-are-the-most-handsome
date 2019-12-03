@@ -25,6 +25,20 @@ module.exports = (app)=>{
         pathRewrite:{
             "^/classifyRight":""
         }
+    })),
+    app.use("/bookFive",proxy({
+        target:"https://mall.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/bookFive":""
+        }
+    })),
+    app.use("/goodList",proxy({
+        target:"https://mallcdn.api.epet.com",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/goodList":""
+        }
     }))
 }
 

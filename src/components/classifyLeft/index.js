@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { ClassifyLeftStyled } from "./styled";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+import {withRouter} from "react-router-dom"
 import { connect } from "react-redux";
-@connect(mapStateToProps, mapDispatchToProps)
 
+@connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 class ClassifyLeft extends Component {
     constructor() {
         super()
         this.state = {
-            num: 88888,
+            num: Number(localStorage.getItem("cateid")) || 88888,
 
         }
     }
@@ -21,9 +23,9 @@ class ClassifyLeft extends Component {
                     <div className="classify_content_nav">
                         <ul>
                             {
-                                data.map((item, index) => {
+                                data.map((item) => {
                                     return (
-                                        <li key={item.cateid} className={num === item.cateid ? 'active' : ''} onClick={this.handleNavList.bind(this, item)}>{item.name}</li>
+                                        <li key={item.cateid} className={num === Number(item.cateid) ? 'active' : ''} onClick={this.handleNavList.bind(this, item)}>{item.name}</li>
                                     )
                                 })
                             }
@@ -43,7 +45,7 @@ class ClassifyLeft extends Component {
                                                 {
                                                     item.list.map((items) => {
                                                         return (
-                                                            <div className={items.id_param?'':'div'} key={items.id_param || items.target.param}>
+                                                            <div className={items.id_param?'':'div'} key={items.id_param || items.target.param} onClick={this.handleToList.bind(this,items.id_param)}>
                                                                 <img className={items.photo?'smallImg':'bigImg'} src={items.photo || items.logo} alt="" />
                                                                 <p>{items.name}</p>
                                                             </div>
@@ -62,14 +64,22 @@ class ClassifyLeft extends Component {
         )
     }
     componentDidMount() {
-        this.props.handleClassifyLeft()
-        this.props.handleClassifyLeftList(88888)
+        if(!localStorage.getItem("classifyLeft")){
+            this.props.handleClassifyLeft()
+        }
+        if(!localStorage.getItem("classifyLeftList")){
+            this.props.handleClassifyLeftList(localStorage.getItem("cateid") || 88888)
+        }
     }
     handleNavList(item) {
         this.setState({
-            num: item.cateid
+            num: Number(item.cateid)
         })
+        localStorage.setItem("cateid",item.cateid)
         this.props.handleClassifyLeftList(item.cateid)
+    }
+    handleToList(id){
+        this.props.history.push("/goodList/"+(id.match(/\d+$/g)[0]))
     }
 }
 export default ClassifyLeft;

@@ -8,6 +8,7 @@ export const TabBarStyled = styled.div`
     position:fixed;
     left:0;
     bottom:0;
+    z-index:10;
     ul{
         width:100%;
         height:100%;

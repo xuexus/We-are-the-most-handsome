@@ -2,8 +2,8 @@ import {classifyLeftAsyncAction,classifyLeftListAsyncAction} from "@/actions/cla
 
 
 export const mapStateToProps = (state)=>({
-    data:state.classify.data,
-    list:state.classify.list
+    data:JSON.parse(localStorage.getItem("classifyLeft")) || state.classify.data,
+    list:state.classify.list[0]?state.classify.list:JSON.parse(localStorage.getItem("classifyLeftList"))
 })
 
 export const mapDispatchToProps =(dispatch)=>({

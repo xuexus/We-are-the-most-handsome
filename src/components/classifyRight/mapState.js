@@ -2,7 +2,7 @@ import {classifyRightAsyncAction} from "@/actions/classify/classifyActionCreator
 
 
 export const mapStateToProps = (state)=>({
-    rightData:state.classify.rightData
+    rightData:JSON.parse(localStorage.getItem("classifyRight")) || state.classify.rightData
 })
 
 

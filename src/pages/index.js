@@ -45,3 +45,28 @@ export const ClassifyRight = Loadable({
     loader:()=>import("@/components/classifyRight"),
     loading:Loading
 })
+
+export const Recommend = Loadable({
+    loader:()=>import("@/components/recommend"),
+    loading:Loading
+})
+
+export const Collect = Loadable({
+    loader:()=>import("@/components/collect"),
+    loading:Loading
+})
+
+export const Appraisal = Loadable({
+    loader:()=>import("@/components/appraisal"),
+    loading:Loading
+})
+
+export const Video = Loadable({
+    loader:()=>import("@/components/video"),
+    loading:Loading
+})
+
+export const GoodList = Loadable({
+    loader:()=>import("./goodList"),
+    loading:Loading
+})

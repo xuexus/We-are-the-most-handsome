@@ -7,7 +7,12 @@ import {
     Login,
     Register,
     ClassifyLeft,
-    ClassifyRight
+    ClassifyRight,
+    Recommend,
+    Collect,
+    Appraisal,
+    Video,
+    GoodList
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -52,7 +57,45 @@ export const TabBarRoute = [
             flag:true
         },
         text:"小萌书",
-        icon:"\ue600"
+        icon:"\ue600",
+        children:[
+            {
+                path:"/smallMBook/recommend",
+                component:Recommend,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/collect",
+                component:Collect,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/appraisal",
+                component:Appraisal,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/video",
+                component:Video,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            }
+        ]
     },
     {
         path:"/cart",
@@ -90,6 +133,14 @@ export const NoTabBarRoute = [
             flag:false
         },
         text:"注册"
+    },
+    {
+        path:"/goodList/:id_param",
+        component:GoodList,
+        meta:{
+            flag:false
+        },
+        text:"商品列表"
     }
 ]
 

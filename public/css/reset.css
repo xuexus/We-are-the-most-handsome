@@ -17,7 +17,6 @@ a { color:#000; text-decoration:none; }
 body,html,#root{
     width:100%;
     height:100%;
-    overflow: hidden;
 }
 html{
     font-size: 32vw;

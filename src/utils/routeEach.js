@@ -48,7 +48,7 @@ export default (routes) => {
                                 }
                             })
                         }
-                        <Redirect from={childNodes.path} to={childNodes.children[1].path} />
+                        <Redirect from={childNodes.path} to={childNodes.children[0].path} />
                     </Switch>
                 </Fragment>
             )
