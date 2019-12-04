@@ -10,7 +10,11 @@ address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:norm
 
 ul, ol ,li{ list-style:none; }
 
+<<<<<<< HEAD
+body { color:#000; font:12px "SimSun","宋体","Arial Narrow",HELVETICA; background: #fff !important}
+=======
 body { color:#000; font:12px "SimSun","宋体","Arial Narrow",HELVETICA; background:#fff !important;}
+>>>>>>> d484ee9a5a8c065a0babab07fb838b0a27c0caa7
 
 a { color:#000; text-decoration:none; }
 
