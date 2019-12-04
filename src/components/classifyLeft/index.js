@@ -34,7 +34,7 @@ class ClassifyLeft extends Component {
                     <div className="classify_content_lists">
                         <div className="classify_content_list">
                             {
-                                list.map((item, index) => {
+                                (list?list:[]).map((item, index) => {
                                     return (
                                         <Fragment key={index}>
                                             <p>
