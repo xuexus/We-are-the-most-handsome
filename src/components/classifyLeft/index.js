@@ -16,6 +16,7 @@ class ClassifyLeft extends Component {
     }
     render() {
         let { data, list } = this.props;
+        console.log(list)
         let { num } = this.state;
         return (
             <ClassifyLeftStyled>
@@ -34,7 +35,7 @@ class ClassifyLeft extends Component {
                     <div className="classify_content_lists">
                         <div className="classify_content_list">
                             {
-                                list.map((item, index) => {
+                                (list?list:[]).map((item, index) => {
                                     return (
                                         <Fragment key={index}>
                                             <p>

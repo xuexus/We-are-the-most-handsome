@@ -1,7 +1,6 @@
 const proxy = require("http-proxy-middleware");
 
 module.exports = (app)=>{
-<<<<<<< HEAD
     app.use("/ajax",proxy({
         target:" https://mallcdn.api.epet.com",
         changeOrigin:true,
@@ -13,9 +12,6 @@ module.exports = (app)=>{
         target:" http://39.105.204.151:3000",
         changeOrigin:true,
     }))
-}
-
-=======
     app.use("/v3",proxy({
         target:"https://mallcdn.api.epet.com",
         changeOrigin:true
@@ -70,7 +66,8 @@ module.exports = (app)=>{
         }
     }))
 }
->>>>>>> d484ee9a5a8c065a0babab07fb838b0a27c0caa7
+
+
 
 
 
