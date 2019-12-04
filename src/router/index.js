@@ -5,7 +5,16 @@ import {
     Cart,
     Main,
     Login,
-    Register
+    Register,
+    ClassifyLeft,
+    ClassifyRight,
+    Recommend,
+    Collect,
+    Appraisal,
+    Video,
+    GoodList,
+    Details,
+    Brand
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -25,7 +34,23 @@ export const TabBarRoute = [
             flag:true
         },
         text:"分类",
-        icon:"\ue601"
+        icon:"\ue601",
+        children:[
+            {
+                path:"/classify/classifyLeft",
+                component:ClassifyLeft,
+                meta:{
+                    flag:true
+                },
+            },
+            {
+                path:"/classify/classifyRight",
+                component:ClassifyRight,
+                meta:{
+                    flag:true
+                },
+            }
+        ]
     },
     {
         path:"/smallMBook",
@@ -34,7 +59,45 @@ export const TabBarRoute = [
             flag:true
         },
         text:"小萌书",
-        icon:"\ue600"
+        icon:"\ue600",
+        children:[
+            {
+                path:"/smallMBook/recommend",
+                component:Recommend,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/collect",
+                component:Collect,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/appraisal",
+                component:Appraisal,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            },
+            {
+                path:"/smallMBook/video",
+                component:Video,
+                meta:{
+                    flag:true
+                },
+                text:"小萌书",
+                icon:"\ue600"
+            }
+        ]
     },
     {
         path:"/cart",
@@ -72,6 +135,30 @@ export const NoTabBarRoute = [
             flag:false
         },
         text:"注册"
+    },
+    {
+        path:"/goodList/:id_param",
+        component:GoodList,
+        meta:{
+            flag:false
+        },
+        text:"商品列表"
+    },
+    {
+        path:"/details/:gid/:sale_price/:market_price",
+        component:Details,
+        meta:{
+            flag:false
+        },
+        text:"商品详情"
+    },
+    {
+        path:"/brand/:gid",
+        component:Brand,
+        meta:{
+            flag:false
+        },
+        text:"品牌"
     }
 ]
 

@@ -11,7 +11,7 @@ class TabBar extends Component{
                 <ul>
                     {
                        TabBarRoute.map((item)=>(
-                           <li key={item.path} onClick={this.handlePath.bind(this,item.path)} className={path===item.path?'active':''}>
+                           <li key={item.path} onClick={this.handlePath.bind(this,item.path)} className={("/"+path.split("/")[1])===item.path?'active':''}>
                                 <i className="iconfont">{item.icon}</i>
                                 <span>{item.text}</span>
                            </li>

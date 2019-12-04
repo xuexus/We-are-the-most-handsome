@@ -2,22 +2,14 @@ import styled from "styled-components";
 
 export const SmallMBookStyled = styled.div`
     .SmallMBook{
-        position:absolute;
-        top:0;
-        left:0;
-        bottom:0;
-        right:0;
         padding-top: 50px;
-        padding-bottom: .433rem;
+        overflow:auto;
     }
     .SmallMBook_nav{
         width:92%;
         height:76px;
         margin:0 auto;
         background:#fff;
-        /* position:fixed;
-        top:0;
-        left:0; */
     }
     .SmallMBook_nav_search{
         overflow: hidden;
@@ -113,9 +105,15 @@ export const SmallMBookStyled = styled.div`
             box-sizing: border-box;
             font-weight: 400;
             font-size: 12px;
+            box-sizing:border-box;
+        }
+        .active{
+            border-bottom:2px solid #41c856;
         }
     }
-    .SmallMBook_container{
+
+
+    /* .SmallMBook_container{
         width:100%;
         border-top:1px solid #f3f4f5;
         padding-bottom:52px;
@@ -220,11 +218,11 @@ export const SmallMBookStyled = styled.div`
             font-size: 12px;
             padding-left:5px;
         }
-    }
+    } */
 
 
     /* 收藏 */
-    .SmallMBook_sollect{
+    /* .SmallMBook_sollect{
         border-top:1px solid #f3f4f5;
     }
     .SmallMBook_sollect_noLogin,.SmallMBook_sollect_yesLogin{
@@ -259,7 +257,7 @@ export const SmallMBookStyled = styled.div`
             border-radius: 20px;
             margin: 15px auto;
         }
-    }
+    } */
 
 
 
@@ -396,5 +394,5 @@ export const SmallMBookStyled = styled.div`
             margin-top: 6px;
             color: #333;
         }
-    }
+    } 
 `

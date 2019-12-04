@@ -35,3 +35,48 @@ export const Register = Loadable({
     loader:()=>import("./register"),
     loading:Loading
 })
+
+export const ClassifyLeft = Loadable({
+    loader:()=>import("@/components/classifyLeft"),
+    loading:Loading
+})
+
+export const ClassifyRight = Loadable({
+    loader:()=>import("@/components/classifyRight"),
+    loading:Loading
+})
+
+export const Recommend = Loadable({
+    loader:()=>import("@/components/recommend"),
+    loading:Loading
+})
+
+export const Collect = Loadable({
+    loader:()=>import("@/components/collect"),
+    loading:Loading
+})
+
+export const Appraisal = Loadable({
+    loader:()=>import("@/components/appraisal"),
+    loading:Loading
+})
+
+export const Video = Loadable({
+    loader:()=>import("@/components/video"),
+    loading:Loading
+})
+
+export const GoodList = Loadable({
+    loader:()=>import("./goodList"),
+    loading:Loading
+})
+
+export const Details = Loadable({
+    loader:()=>import("./details"),
+    loading:Loading
+})
+
+export const Brand = Loadable({
+    loader:()=>import("./brand"),
+    loading:Loading
+})
