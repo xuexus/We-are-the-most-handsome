@@ -5,7 +5,8 @@ export const mapStateToProps = (state)=>({
 
 export const mapDispatchToProps = (dispatch)=>({
     // 加入购物车
-    handleMyCart(gid){
+    handleMyCart(gid,e){
+        e.stopPropagation();
         this.state.flag=true;
         // console.log(gid)
         this.state.storage=window.localStorage.getItem("CART");

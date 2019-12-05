@@ -18,6 +18,9 @@ export default handleActions({
         let RecommendTypeDefault = JSON.parse(JSON.stringify(state))
         RecommendTypeDefault.list = action.payload
         var storage = JSON.parse(localStorage.getItem("Recommend"))
+        if(!storage){
+            storage=[]
+        }
         for(var n=0;n<storage.length;n++){
             for(var i=0;i<RecommendTypeDefault.list.length;i++){
                 if(storage[n].id===RecommendTypeDefault.list[i].data.id){

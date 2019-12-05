@@ -10,7 +10,7 @@ export const GoodListApi = (cateid,desc,page=1)=>http.get({
         orderby:desc,
         cateid,
         pet_type:"dog",
-        extend_pam:m,
+        extend_pam:"",
         real_wid:'',
         region:'',
         system:"wap",
