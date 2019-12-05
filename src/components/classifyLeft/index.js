@@ -16,7 +16,6 @@ class ClassifyLeft extends Component {
     }
     render() {
         let { data, list } = this.props;
-        console.log(list)
         let { num } = this.state;
         return (
             <ClassifyLeftStyled>

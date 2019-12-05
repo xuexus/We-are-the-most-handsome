@@ -37,11 +37,7 @@ class GoodsList extends React.Component {
                     title: "评论"
                 }
             ],
-            // flag:false,
-            // def:"默认",
-            // n:0,
-            // search:"点击搜索商品",
-            // m:"",
+            m:"",
             flag: false,
             def: "默认",
             n: 0,
@@ -51,27 +47,17 @@ class GoodsList extends React.Component {
         
     }
     render() {
-        console.log(this.props)
         let { goodList } = this.props
-        // let {num,numP,srot,flag,def,n,m } = this.state
-        // return (
-        //     <GoodsListStyled>
-        //         {/* <BScroll> */}
-        //         <div className="goodsList">
-        //             <div className="goodsList_search">
-        //                 <div >
-        //                     <i></i>
-        //                     <p onClick={this.handleDian.bind(this)}>{m}</p>
-        let { num, numP, srot, flag, def, n } = this.state
+        let { num, numP, srot, flag, def, n,m } = this.state
         return (
             <GoodsListStyled>
                 <BScroll ref="scroll">
                     <div className="goodsList">
                     <Header title="商品列表"/>
                         <div className="goodsList_search">
-                            <div>
+                            <div onClick={this.handleDian.bind(this)}>
                                 <i></i>
-                                <p>点击搜索商品</p>
+                                <p>{this.props.match.params.xxs===' '?"点击搜索商品":m}</p>
                             </div>
                         </div>
 
@@ -137,27 +123,26 @@ class GoodsList extends React.Component {
     }
 
     componentDidMount() {
-    //    this.handleZhuan()
-    // }
-    // // 接受的值
-    // handleZhuan(){
-    //     this.setState({
-    //         search:this.props.match.params.id_param,
-    //         m:this.props.match.params.xxs
-    //     },()=>{
-    //         this.props.handleGoodList(this.state.search,"sold_desc","keyword:"+this.state.m)
-    //     })
-    // }
-    // // 点击搜索
-    // handleDian(){
-    //     this.props.history.push("/search")
-        this.props.handleGoodList(this.props.match.params.id_param, "def_desc",1)
-        this.state.page++
         this.refs.scroll.handlepullingUp(()=>{
-            this.props.handleGoodList(this.props.match.params.id_param, "def_desc",this.state.page)
+            this.props.handleGoodList(this.props.match.params.id_param, "def_desc",this.state.page,"keyword:"+this.state.m)
             this.state.page++
             
         })
+       this.handleZhuan()
+    }
+    // 接受的值
+    handleZhuan(){
+        this.setState({
+            search:this.props.match.params.id_param,
+            m:this.props.match.params.xxs
+        },()=>{
+            this.props.handleGoodList(this.state.search,"def_desc",1,"keyword:"+this.state.m)
+            this.state.page++
+        })
+        
+    }
+    handleDian(){
+        this.props.history.push("/search")
     }
     componentWillUpdate(){
         this.refs.scroll.handlefinishPullUp();
@@ -173,14 +158,12 @@ class GoodsList extends React.Component {
         this.handleSort(index)
     }
     handleSortSales(index) {
-        console.log(11111)
         this.setState({
             flag: false,
             desc:"sold_desc"
         })
 
-        // this.props.handleGoodList(this.props.match.params.id_param,"sold_desc",this.state.m)
-        this.props.handleGoodList(this.props.match.params.id_param, "sold_desc",1)
+        this.props.handleGoodList(this.props.match.params.id_param, "sold_desc",1,"keyword:"+this.state.m)
         this.handleSort(index)
     }
     handleSortPrice(index, n) {
@@ -193,16 +176,13 @@ class GoodsList extends React.Component {
                 n: 1,
                 desc:"price_asc"
             })
-        //     this.props.handleGoodList(this.props.match.params.id_param,"price_asc",this.state.m)
-        // }else{
-            this.props.handleGoodList(this.props.match.params.id_param, "price_asc",1)
+            this.props.handleGoodList(this.props.match.params.id_param, "price_asc",1,"keyword:"+this.state.m)
         } else {
             this.setState({
                 n: 0,
                 desc:"price_desc"
             })
-            // this.props.handleGoodList(this.props.match.params.id_param,"price_desc",this.state.m)
-            this.props.handleGoodList(this.props.match.params.id_param, "price_desc",1)
+            this.props.handleGoodList(this.props.match.params.id_param, "price_desc",1,"keyword:"+this.state.m)
         }
         this.handleSort(index)
     }
@@ -216,8 +196,7 @@ class GoodsList extends React.Component {
             numP: index,
             desc:this.state.srot[index].path
         })
-        // this.props.handleGoodList(this.props.match.params.id_param,this.state.srot[index].path,this.state.m)
-        this.props.handleGoodList(this.props.match.params.id_param, this.state.srot[index].path,1)
+        this.props.handleGoodList(this.props.match.params.id_param, this.state.srot[index].path,1,"keyword:"+this.state.m)
     }
 
 

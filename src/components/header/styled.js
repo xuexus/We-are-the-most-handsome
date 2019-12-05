@@ -9,6 +9,7 @@ export  const HeaderContainer=styled.div`
         position:absolute;
         top:0;
         left:0;
+        z-index:999;
         .header_first{
             float:left;
             margin-left:20px;

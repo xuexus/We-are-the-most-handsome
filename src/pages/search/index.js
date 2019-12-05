@@ -1,22 +1,40 @@
 import React from "react";
 import { SearchStyled } from "./styled";
-import {withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 @withRouter
 class Search extends React.Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
-            search:""
+        this.state = {
+            search: "",
+            recommend: [
+                "发育宝",
+                "心丝虫",
+                "诺瑞",
+                "渴望",
+                "顶间",
+                "宝路",
+                "钙胃能",
+                "澳路雪",
+                "生鲜本能",
+                "now",
+                "窝窝",
+                "益生菌",
+                "海洋之心",
+                "腔骨",
+                "狗粮"
+            ],
+            searchs:[]
         }
     }
     render() {
-        let {search}=this.state
+        let { search, recommend , searchs } = this.state
         return (
             <SearchStyled>
                 <div className="search">
                     <div className="search_title">
                         <p onClick={this.handleBack.bind(this)}>&lt;</p >
-                        <input type="text" placeholder="搜索你喜欢的宝贝" value={search} onChange={this.handleSou.bind(this)}/>
+                        <input type="text" placeholder="搜索你喜欢的宝贝" value={search} onChange={this.handleSou.bind(this)} />
                         <span onClick={this.handleSuo.bind(this)}>搜索</span>
                         < img src="https://static.epetbar.com/static_wap/epetapp/pages/search/images/search-ico.png" alt="" />
                     </div>
@@ -29,18 +47,13 @@ class Search extends React.Component {
 
 
                     <div className="search_recommend_list">
-                        <p>now</p >
-                        <p>狗笼子</p >
-                        <p>狗狗奶粉</p >
-                        <p>now</p >
-                        <p>狗笼子</p >
-                        <p>狗狗奶粉</p >
-                        <p>now</p >
-                        <p>狗笼子</p >
-                        <p>狗狗奶粉</p >
-                        <p>now</p >
-                        <p>狗笼子</p >
-                        <p>狗狗奶粉</p >
+                        {
+                            recommend.map((item, index) => {
+                                return (
+                                    <p key={index} onClick={this.handleRecommend.bind(this, item)}>{item}</p >
+                                )
+                            })
+                        }
                     </div>
 
                     <div className="search_recommend">
@@ -50,33 +63,74 @@ class Search extends React.Component {
 
 
                     <div className="search_recommend_lists">
-                        <p>宠</p >
-                        <p>宠</p >
-                        <p>宠</p >
+                        {
+                            searchs.map((item,index)=>{
+                                return (
+                                    <p key={index} onClick={this.handleRecommend.bind(this,item.content)}>{item.content}</p >
+                                )
+                            })
+                        }
                     </div>
 
-                    <div className="search_history">清空搜索历史</div>
+                    <div className="search_history" onClick={this.handleRemove.bind(this)}>清空搜索历史</div>
                 </div>
             </SearchStyled>
         )
     }
+    componentDidMount(){
+        if(localStorage.getItem("search")){
+            this.setState({
+                searchs:JSON.parse(localStorage.getItem("search")).reverse()
+            })
+        }
+    }
     // 返回
-    handleBack(){
+    handleBack() {
         this.props.history.goBack()
     }
-    handleSou(e){
-        let val=e.target.value;
+    handleSou(e) {
+        let val = e.target.value;
         this.setState({
-            search:val
-        },()=>{
-            console.log(this.state.search)
+            search: val
         })
-        
+
     }
-    handleSuo(){
-        console.log(this.state.search)
-        this.props.history.push("/goodList/"+0+"/"+this.state.search)
+    handleSuo() {
+        let storage = localStorage.getItem("search");
+        if (!storage) {
+            storage = [];
+        } else {
+            storage = JSON.parse(storage);
+        }
         
+        let _has = 0;
+        for (let i = 0; i < storage.length; i++) {
+            if (storage[i]. content=== this.state.search) {
+                storage.splice(i, 1);
+                storage.push({
+                    content: this.state.search,
+                })
+                _has = 1;
+                break;
+            }
+        }
+        if (_has === 0) {
+            storage.push({
+                content: this.state.search,
+            })
+        }
+        window.localStorage.setItem("search", JSON.stringify(storage))
+        this.props.history.push("/goodList/" + 0 + "/" + this.state.search)
+
+    }
+    handleRecommend(item) {
+        this.props.history.push("/goodList/" + 0 + "/" + item)
+    }
+    handleRemove(){
+        window.localStorage.setItem("search", "[]")
+        this.setState({
+            searchs:[]
+        })
     }
 }
 
