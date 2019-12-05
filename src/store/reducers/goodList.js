@@ -9,7 +9,11 @@ let defaultState = {
 export default handleActions({
     [GoodList]:(state,action)=>{
         let GoodListDefault = JSON.parse(JSON.stringify(state))
-        GoodListDefault.goodList = action.payload
+        if(action.payload.page===1){
+            GoodListDefault.goodList = action.payload.data
+        }else{
+            GoodListDefault.goodList = [...GoodListDefault.goodList,...action.payload.data]
+        }
         return GoodListDefault
     }
 },defaultState)

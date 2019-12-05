@@ -10,7 +10,6 @@ import {withRouter} from "react-router-dom";
 class Brand extends React.Component {
     render() {
         let { data } = this.props;
-        console.log(data)
         return (
             <BrandStyled>
                 <div className="brandStyled">

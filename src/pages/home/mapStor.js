@@ -25,7 +25,6 @@ export const mapDispatchToProps = (dispatch)=>({
             }
         }
         if(_has===0){
-            console.log(this.state.storage)
             this.state.storage.push({
                 id:gid.gid,
                 counter:1,

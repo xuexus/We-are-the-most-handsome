@@ -2,8 +2,10 @@ import React from "react";
 import { VideoStyled } from "./styled";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { connect } from "react-redux"
+import {withRouter} from "react-router-dom"
 
 @connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 
 class Video extends React.Component {
     render() {
@@ -51,7 +53,7 @@ class Video extends React.Component {
         )
     }
     componentDidMount() {
-        this.props.handleVideo()
+        this.props.handleVideo(4,this.props.location.search.split("=")[1])
     }
 }
 

@@ -10,7 +10,7 @@ export const Section = styled.div`
         width:100%;
         overflow:auto;
         padding-bottom:60px;
-        
+        padding-top:50px;
     }
     input{
         width:16px;
@@ -225,5 +225,8 @@ export const Section = styled.div`
             color:#fff ;
             font-size:14px; 
         }
+    }
+    .goPrice{
+        background:#41c856;
     }
 `

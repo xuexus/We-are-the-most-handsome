@@ -21,6 +21,7 @@ export const CollectStyled = styled.div`
         padding: 0;
         box-sizing: border-box;
         line-height: 1.6;
+        padding-bottom:52px;
         >div{
             width: 92%;
             margin: 20px auto;

@@ -4,6 +4,7 @@ import { Carousel, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux";
+import Header from "@/components/header"
 
 @connect(mapStateToProps, mapDispatchToProps)
 @withRouter
@@ -17,15 +18,18 @@ class Details extends React.Component {
             data: [],
             imgHeight: 176,
             slideIndex: 0,
-            indexD: 1
+            indexD: 1,
+            num:1,
+            storage:[]
         }
     }
     render() {
-        let { czdp, dpgm, jxpj, indexD, data } = this.state;
+        let { czdp, dpgm, jxpj, indexD, data , num } = this.state;
         let { deta } = this.props;
         return (
             <DetailsStyled>
                 <div className="details">
+                    <Header title="详情"/>
                     <div>
                         <div className="details_swiper">
 
@@ -74,8 +78,11 @@ class Details extends React.Component {
                                 <span>
                                     <span>￥</span>
                                     <span>{this.props.match.params.sale_price}</span>
-                                    <span>￥</span>
-                                    <span>{this.props.match.params.market_price}</span>
+                                    
+                                    {
+                                        this.props.match.params.market_price!==" "?<span><span>￥</span><span>{this.props.match.params.market_price}</span></span>:''
+                                    }
+                                    
                                 </span>
                                 <span>
                                     <img src={deta[0] ? deta[1].price_right.img : ''} alt="" />
@@ -113,9 +120,9 @@ class Details extends React.Component {
 
                         <div className="details_buynum">
                             <span>购买数量</span>
-                            <span>-</span>
-                            <input type="text" placeholder="1" />
-                            <span>+</span>
+                            <span onClick={this.handleDel.bind(this,num)}>-</span>
+                            <input type="text" value={num} onChange={this.handleValue.bind(this)}/>
+                            <span onClick={this.handleAdd.bind(this,num)}>+</span>
                         </div>
 
                         <div className="details_site">
@@ -192,9 +199,9 @@ class Details extends React.Component {
                                 <i>
                                     <span></span>
                                 </i>
-                                <p>购物车</p>
+                                <p onClick={this.handleGoCart.bind(this)}>购物车</p>
                             </div>
-                            <div className="details_goCart_right">加入购物车</div>
+                            <div className="details_goCart_right" onClick={this.handleToCart.bind(this)}>加入购物车</div>
                         </div>
                         
                     </div>
@@ -208,7 +215,6 @@ class Details extends React.Component {
 
     }
     componentWillReceiveProps(newProps) {
-        console.log(newProps)
         newProps.deta.map(item => {
             if (item.type === 4) {
                 this.setState({
@@ -233,7 +239,55 @@ class Details extends React.Component {
         });
     }
 
-
+    handleDel(n){
+        if(n>1){
+            this.setState({
+                num:n-1
+            })
+        }
+    }
+    handleAdd(n){
+        this.setState({
+            num:n+1
+        })
+    }
+    handleValue(e){
+        this.setState({
+            num:e.target.value
+        })
+    }
+    handleToCart(){
+        this.state.storage=window.localStorage.getItem("CART");
+        if(!this.state.storage){
+            this.state.storage=[];
+        }else{
+            this.state.storage=JSON.parse(this.state.storage);
+        }
+        let _has=0;
+        if(/^\d+$/gim.test(this.props.deta[1].gid+"")){
+            for(let i=0;i<this.state.storage.length;i++){
+                if(this.state.storage[i].id===this.props.deta[1].gid){
+                    this.state.storage[i].counter+=this.state.num;
+                    _has=1;
+                    break;
+                }
+            }
+        }
+        if(_has===0){
+            this.state.storage.push({
+                id:this.props.deta[1].gid,
+                counter:this.state.num,
+                img:this.props.deta[0].photos[0].image,
+                show:this.props.deta[1].subject,
+                price:this.props.match.params.sale_price
+            })
+        }
+        window.localStorage.setItem("CART",JSON.stringify(this.state.storage))
+        alert("成功加入购物车")
+    }
+    handleGoCart(){
+        this.props.history.push("/cart")
+    }
 }
 
 export default Details;

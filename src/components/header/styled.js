@@ -5,8 +5,10 @@ export  const HeaderContainer=styled.div`
         height:50px;
         font-size:16px;
         line-height:50px;
-        position: relative;
         background:#fff;
+        position:absolute;
+        top:0;
+        left:0;
         .header_first{
             float:left;
             margin-left:20px;

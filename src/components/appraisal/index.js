@@ -3,7 +3,9 @@ import { AppraisalStyle } from "./styled"
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { connect } from "react-redux";
 
+import {withRouter} from "react-router-dom"
 @connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 class Appraisal extends React.Component {
     render() {
         let { appraisal } = this.props;
@@ -40,7 +42,7 @@ class Appraisal extends React.Component {
         )
     }
     componentDidMount() {
-        this.props.handleAppraisal()
+        this.props.handleAppraisal(1,this.props.location.search.split("=")[1])
     }
 }
 
