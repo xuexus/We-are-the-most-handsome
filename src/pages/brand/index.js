@@ -3,6 +3,7 @@ import { BrandStyled } from "./styled";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
+import Header from "@/components/header"
 
 @withRouter
 @connect(mapStateToProps, mapDispatchToProps)
@@ -12,6 +13,7 @@ class Brand extends React.Component {
         let { data } = this.props;
         return (
             <BrandStyled>
+            <Header title="品牌"/>
                 <div className="brandStyled">
                     <div className="brandStyled_bigImg">
                         <img src={data.head_info ? data.head_info.banner : ''} alt="" />

@@ -15,7 +15,6 @@ class Collect extends React.Component {
     }
     render() {
         let { collect } = this.state;
-        console.log(collect)
         return (
             <CollectStyled>
                 <div className="SmallMBook_sollect">
