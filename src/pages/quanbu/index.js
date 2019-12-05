@@ -11,9 +11,14 @@ import { mapStateToProps, mapDispatchToProps } from "./mapStor"
 class Complete extends React.Component {
     constructor() {
         super()
+        this.state={
+            m:0,
+
+        }
     }
     render() {
         let { data } = this.props
+        let {m}=this.state
         return (
             <Sixth>
                 <Header title="全部品牌 "/>
@@ -24,7 +29,7 @@ class Complete extends React.Component {
                             <div className="right">
                                 {
                                     (data ? data : []).map((item, index) => {
-                                        return <span key={index}  onClick={this.handleTiao.bind(this,index)}>
+                                        return <span key={index}  onClick={this.handleTiao.bind(this,index)} className={m===index?"span":"spane"}>
                                             {item.order}
                                         </span>
                                     })
@@ -66,6 +71,9 @@ class Complete extends React.Component {
         this.props.handleQuanbuAsyncData();
     }
     handleTiao(index){
+        this.setState({
+            m:index
+        })
         let t=this.refs.biaoshi.querySelectorAll(".brand_second_one")[index].offsetTop
         window.scrollTo({
             left: 0,

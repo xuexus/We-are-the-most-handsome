@@ -7,7 +7,10 @@ export const mapStateToProps = (state)=>({
 
 
 export const mapDispatchToProps = (dispatch)=>({
-
+    // 跳转注册
+    handleZhuce(){
+        this.props.history.push("/register")
+    },
     handleValone(e){
         let val=e.target.value;
         this.setState({
@@ -45,7 +48,9 @@ export const mapDispatchToProps = (dispatch)=>({
     async handleYanzheng(e){
         e.preventDefault();
         let data = await dispatch(loginAsyncAction(this.state.valone,this.state.valtwo));
-        if(data===1){
+        console.log(data)
+        if(data.code===1){
+            window.localStorage.setItem("Name",JSON.stringify(data.data.name))
             this.props.history.push("/main")
         }
     }

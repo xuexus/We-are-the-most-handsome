@@ -39,13 +39,19 @@ export const Sixth = styled.div`
         height: 100%;
         vertical-align: middle; 
         box-sizing: border-box;
-        >span{
+        >.span{
             display: block;
             height: 12px;
             margin-top: 2px;
             font-size: 12px;
-            /* color: #41C856;
-            font-weight: 700; */
+            color:green;
+            font-weight:800;
+        }
+        >.spane{
+            display: block;
+            height: 12px;
+            margin-top: 2px;
+            font-size: 12px;
         }
     }
     .brand_second{

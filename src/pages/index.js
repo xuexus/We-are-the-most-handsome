@@ -91,5 +91,10 @@ export const Quanbu = Loadable({
     loading: Loading
 })
 
+export const Output = Loadable({
+    loader: () => import("./output"),
+    loading: Loading
+})
+
 
 

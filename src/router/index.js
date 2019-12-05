@@ -16,7 +16,8 @@ import {
     Details,       
     Brand,
     Search,
-    Quanbu
+    Quanbu,
+    Output
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -126,6 +127,15 @@ export const NoTabBarRoute = [
     {
         path:"/search",
         component:Search,
+        meta:{
+            flag:true
+        },
+        text:"精选",
+        icon:"\ue642" 
+    },
+    {
+        path:"/output/:name",
+        component:Output,
         meta:{
             flag:true
         },

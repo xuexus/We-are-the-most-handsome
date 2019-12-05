@@ -31,7 +31,7 @@ class Login extends Component {
                         </div>
                         <h2 className="method">
                             <a href="#">短信验证码登录</a>
-                            <a href="#">新用户注册</a>
+                            <b onClick={this.props.handleZhuce.bind(this)}>新用户注册</b>
                         </h2>
                     </div>
                     <div className="rest">

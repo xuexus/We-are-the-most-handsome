@@ -79,11 +79,12 @@ export const Fourth = styled.div`
         font-size: 12px;
         margin-top: 15px;
         overflow: hidden!important;
-        >a:nth-of-type(1){
+        >a{
             float: left;
             font-size: 12px;
         }
-        >a:nth-of-type(2){
+        >b{
+            font-weight:100;
             float: right;
             font-size: 12px;
             cursor: pointer;

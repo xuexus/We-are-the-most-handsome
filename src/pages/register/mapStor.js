@@ -44,8 +44,8 @@ export const mapDispatchToProps = (dispatch)=>({
     async handleChuan(e){
         e.preventDefault();
         let data=await dispatch(registerAsyncAction(this.state.username,this.state.password));
-        if(data===1){
-            this.props.history.push("/main")
+        if(data.code===1){
+            this.props.history.push("/login")
         }
     },
 })

@@ -4,7 +4,15 @@ import { Thirdiy } from './styled'
 import { withRouter } from "react-router-dom"
 @withRouter
 class Main extends Component {
+    constructor(){
+        super()
+        this.state={
+            name:"",
+            flag:true,
+        }
+    }
     render() {
+        let {name,flag}=this.state
         return (
             <Thirdiy>
                <Header title="我的E宠"/>
@@ -18,7 +26,10 @@ class Main extends Component {
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OEFDQTczNkNERDg1MTFFODlDMjY4NzJEMkExMEZGMDEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OEFDQTczNkJERDg1MTFFODlDMjY4NzJEMkExMEZGMDEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTEzRDlFMUFDMDY3MTFFOEJFQTZCMzM5OEY0N0I3NkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTEzRDlFMUJDMDY3MTFFOEJFQTZCMzM5OEY0N0I3NkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz47zYVrAAAEWUlEQVR42uyaWUgVURjH7x0XsrQsNVrMlFIrqGgjDfEWRQ9Fm0RgEfhQ4EMhQU89tEEv4UPRQ/RQRAX1YAstRCmYLWTrQ5RlWt1sVSkNS1Hv7fb/7D91Gu61uTOac6EPfoyOc875vnPOnPkW3YFAwBXJorkiXKL7qJ+JYCGYBiaBDJAIhnGSWsE3UE8egBugBny3M7DbxhaaDDaCVSDdYh/vQBk4Ae7/KwMWgR0gT7nXDMrBPc7qC/AZfOEM66shK5UF5gEPGKf0cQvsBefD0kYMMMl0UBn4La3gAJgD3GH0ozIblIJPSr9V7NNUH2YeigHbQScHaAZbwWCLSgdD+toMPnKMbrCLY9syIJkzIuIH+0FCHypuJJ4r4ueYN0CKVQOyQT07egPy+1FxI3nAy7FfUpewDJgI3rODO2DMP1ReXf2b1OEDdTJlQCqoY8OrfbzXrbwb5dSlLth2MjaIBtVsUD3AyqtG3KVOFUDrzYBtfFD233AHKK/uCn1Ll4QyIAN0gO9ggYOU11lKA9pBejADjvOBYw5UPqSOuiuRxs+/fPYzQYNDnc/xoJZOqPhidbo7vYU3TzlYeZHX4DiIAsW6L6TxnA3QN3E5nFnUtUlOTdlCObDjNngJJkRIHPMMZIP5GgMRkcsWOzsIOsGhfm6jyhVe58uSlHFJCi0uqY/tff3cRqWQ7c9oDDJcfLsjRR7zOknj0STitdjZYdAFjvRzG2MoKjJKXmI9pnRHWDKiG/g1/iASE4FZlYDG4FtkRAQpPpTXNtWAZDvpGbCTx+Ogvyz9brDJpgFjef0oR9IFHkmrbXwds5SswgrlfhpIUn5frjyXbmO8tezjtMYsmcuQ5wlXJC+kHwYrQRxYA+6Ch6CA9wr5jB+02BhvLq+PxBoPramx6aNcCpiXszbHes5+PHoY2cgbs2xGTbUGRZsMSSuRJzaTBLOVvqPkpfKBk6AEFClbKlx5y+TuKiZ3Jb64yBd8KR1FcRjP0Q+yKsW8Hu3ZirRqCkPJNpDoYFc6gxlCn55m0QMaScheBfFgg4PP/z0glkFNvTG5W8C9dd2hs7+M+n0F44MF9SP4QJsDlU9VEr8lveWFOvhQrIOUl8TWAyVT+EdiS62RDaEb0E5X1wkiOl0CM7nn1xlLUqoBC3593ZwhI0FFT9j4M1OymF/8kFXKIl4vOkB5D2tmOfyeiBGveisxTeXZKmfs6AHc74ksougFjmtMs/+1wKF7pPsGSPEEni7N1KOLZa1osyUm/fRJMVkG2gBukSiLSks4m8tJa1F8pUoWFE31oxe6m5gf3cq3voH32ukGZ3I/you0hPf0RIAxlk7l35tZ4I7hFz6J/pAkpHK5z0cr7apAadjvIC0poi9kRvws/K0HcYYZSWH626x4WdSbYXX7qYXufJ5EWVyNZM6kzGIjA5Ob9Cbfh5iPWHq2M1jcHs6kwVeGrl6e5/dZ2H5q97iy868G//9bpS/khwADAOwYKYZNFJk3AAAAAElFTkSuQmCC" alt="" />
                             </b>
                         </div>
-                        <div className="logo">
+
+
+
+                        <div className="logo" style={{display:flag?"block":"none"}} >
                             <div className="logo_first">
                                 <img src="https://static.epetbar.com/static_wap/appmall/avatar/dog.png" alt="" />
                             </div>
@@ -30,6 +41,18 @@ class Main extends Component {
                                 </p>
                             </div>
                         </div>
+
+
+                        <div className="logos" style={{display:flag?"none":"block"}}>
+                            <div className="logo_firsts">
+                                <img src="https://img2.epetbar.com/dogs/3.jpg?x-oss-process=style/waterfall&$1=100" alt="" onClick={this.handleOut.bind(this)}/>
+                            </div>
+                            <div className="logo_seconds">
+                                <p>主人{name}</p>
+                            </div>
+                        </div>
+
+
                         <div className="bool">
                             <ul className="bool_first">
                                 <li>
@@ -209,11 +232,35 @@ class Main extends Component {
             </Thirdiy>
         )
     }
+    // 退出登录
+    handleOut(){
+        this.props.history.push("/output/"+this.state.name)
+    }
+    componentDidMount(){
+        this.handleJie()
+    }
+    handleJie(){
+        if(localStorage.getItem("Name")){
+            this.setState({
+                name:localStorage.getItem("Name"),
+            },()=>{
+                this.setState({
+                    flag:false
+                })
+            })
+        }else{
+            this.setState({
+                flag:true
+            }) 
+        }
+        this.forceUpdate()
+    }
     handlelogin(){
         this.props.history.push("/login")
     }
     handleRegister(){
         this.props.history.push("/register")
     }
+
 }
 export default Main;

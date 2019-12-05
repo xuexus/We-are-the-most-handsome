@@ -29,6 +29,7 @@ export const registerAsyncAction = (username,password)=>{
     return async (dispatch)=>{
         
         let data = await registerApi(username,password)
+    
         if(data.data.data.status===1){
             alert(data.data.data.info)
             sessionStorage.setItem("userInfo",JSON.stringify({username:username,password:password}))
@@ -53,7 +54,7 @@ export const loginAsyncAction = (username,password)=>{
             alert(data.data.data.info)
             sessionStorage.setItem("userInfo",JSON.stringify({username:username,password:password}))
             dispatch(loginAction(data.data.data))
-            return data.data.data.code;
+            return data.data.data;
         }else{
             alert(data.data.data.info)
         }

@@ -38,6 +38,7 @@ export const Thirdiy = styled.div`
             }
         }
     }
+    /* 登陆前 */
     .logo{
         clear: both;
         margin: 30px 0;
@@ -59,6 +60,39 @@ export const Thirdiy = styled.div`
         box-sizing: border-box;
         >p{
             margin-top: 15px;
+            >span{
+                color:#fff;
+                font-size:16px;
+                margin-right:5px;
+            }
+        }
+    }
+    /* 登陆后 */
+    .logos{
+        clear: both;
+        margin: 30px 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        overflow:auto;
+    }
+    .logo_firsts{
+        float: left;
+       
+        >img{
+            width: 70px;
+            height: 70px;
+            border-radius:50%;
+        }
+    }
+    .logo_seconds{
+        margin-left: 80px;
+        padding-top: 8px;;
+        box-sizing: border-box;
+        >p{
+            margin-top: 15px;
+            color:#fff;
+            font-size:16px;
             >span{
                 color:#fff;
                 font-size:16px;
