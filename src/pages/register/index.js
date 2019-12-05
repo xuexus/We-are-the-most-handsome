@@ -10,13 +10,13 @@ class Register extends Component {
         super()
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            color:false
         }
        
     }
     render() {
-        console.log(this.props)
-        let { username, password } = this.state;
+        let { username, password, color } = this.state;
         return (
             <Fiveth>
                 <div className="register"> </div>
@@ -28,7 +28,7 @@ class Register extends Component {
                             <input type="text" placeholder="请输入6-20位密码" value={password} onChange={this.props.handleRegistere.bind(this)} />
                         </div>
                         <div className="zhuce">
-                            <i href="#" onClick={this.props.handleChuan.bind(this)}>下一步</i>
+                            <i className={color?"I":"i"}  onClick={this.props.handleChuan.bind(this)}>下一步</i>
                         </div>
                     </div>
                     <h2>点击“下一步”，即表示您阅读并同意
@@ -37,17 +37,6 @@ class Register extends Component {
                 </div>
             </Fiveth>
         )
-    }
-    componentDidUpdate(){
-        console.log(this.props)
-        if (this.props.date.data) {
-            if (this.props.date.data.data.status === 1) {
-                alert(this.props.date.data.data.info);
-                this.props.history.push("/main")
-            } else {
-                alert(this.props.date.data.data.info);
-            }
-        }
     }
 }
 export default Register;

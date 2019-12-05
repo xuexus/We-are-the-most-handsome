@@ -13,8 +13,10 @@ import {
     Appraisal,
     Video,
     GoodList,
-    Details,
-    Brand
+    Details,       
+    Brand,
+    Search,
+    Quanbu
 } from "@/pages";
 
 export const TabBarRoute = [
@@ -27,6 +29,7 @@ export const TabBarRoute = [
         text:"精选",
         icon:"\ue642"
     },
+   
     {
         path:"/classify",
         component:Classify,
@@ -121,6 +124,24 @@ export const TabBarRoute = [
 
 export const NoTabBarRoute = [
     {
+        path:"/search",
+        component:Search,
+        meta:{
+            flag:true
+        },
+        text:"精选",
+        icon:"\ue642" 
+    },
+    {
+        path:"/quanbu",
+        component:Quanbu,
+        meta:{
+            flag:true
+        },
+        text:"精选",
+        icon:"\ue642" 
+    },
+    {
         path:"/login",
         component:Login,
         meta:{
@@ -137,7 +158,7 @@ export const NoTabBarRoute = [
         text:"注册"
     },
     {
-        path:"/goodList/:id_param",
+        path:"/goodList/:id_param/:xxs",
         component:GoodList,
         meta:{
             flag:false

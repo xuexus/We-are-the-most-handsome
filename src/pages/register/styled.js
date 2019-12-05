@@ -45,10 +45,22 @@ export const Fiveth = styled.div`
         }
     }
     .zhuce{
-        >i{
+        >.i{
             font-style:normal;
             background: #f0f0f0;
             color: #bfbfbf;
+            width: 100%;
+            line-height: 50px;
+            margin-top: 37px;
+            display: block;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        >.I{
+            font-style:normal;
+            background: green;
+            color: #fff;
             width: 100%;
             line-height: 50px;
             margin-top: 37px;

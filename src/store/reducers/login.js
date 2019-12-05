@@ -7,8 +7,8 @@ const defaultState = {
 export default handleActions({
     [loginApp]: (state, action) => {
         let loginState = JSON.parse(JSON.stringify(state));
-        loginState.date = action.data;
-        console.log(loginState.date );
+        loginState.date = action.payload;
+        // console.log(loginState.date );
         return loginState;
     }
 }, defaultState)

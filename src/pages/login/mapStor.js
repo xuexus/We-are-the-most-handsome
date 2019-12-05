@@ -2,6 +2,7 @@ import {loginAsyncAction} from "@/actions/week/weekActionCreates"
 
 export const mapStateToProps = (state)=>({
     date:state.login.date
+    
 })
 
 
@@ -12,18 +13,40 @@ export const mapDispatchToProps = (dispatch)=>({
         this.setState({
             valone:val
         },()=>{
-            // console.log(this.state.username)
+            if(this.state.valone && this.state.valtwo){
+                this.setState({
+                    color:true
+                })
+            }else{
+                this.setState({
+                    color:false
+                })
+            }
         })
+        
     },
     handleValtwo(e){
         let val=e.target.value;
         this.setState({
             valtwo:val
         },()=>{
-            // console.log(this.state.password)
+            if(this.state.valone && this.state.valtwo){
+                this.setState({
+                    color:true
+                })
+            }else{
+                this.setState({
+                    color:false
+                })
+            }
         })
+        
     },
-    handleYanzheng(){
-        dispatch(loginAsyncAction(this.state.valone,this.state.valtwo));
+    async handleYanzheng(e){
+        e.preventDefault();
+        let data = await dispatch(loginAsyncAction(this.state.valone,this.state.valtwo));
+        if(data===1){
+            this.props.history.push("/main")
+        }
     }
 })

@@ -9,6 +9,7 @@ import brand from "./reducers/brand"
 import home from "./reducers/home";
 import register from "./reducers/register";
 import login from "./reducers/login"
+import quanbu from "./reducers/quanbu"
 
 const reducers = combineReducers({
     classify,
@@ -18,7 +19,9 @@ const reducers = combineReducers({
     brand,
     home,
     register,
-    login
+    login,
+    quanbu,
+    
 })
 
 const store = createStore(reducers,composeWithDevTools(applyMiddleware(reduxThunk)))

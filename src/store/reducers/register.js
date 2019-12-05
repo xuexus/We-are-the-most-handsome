@@ -7,7 +7,7 @@ const defaultState = {
 export default handleActions({
     [registerApp]: (state, action) => {
         let registerState = JSON.parse(JSON.stringify(state));
-        registerState.date = action.data;
+        registerState.date = action.payload;
         console.log(registerState.date );
         return registerState;
     }

@@ -3,11 +3,10 @@ import styled from "styled-components"
 export  const HeaderContainer=styled.div`
         width:100%;
         height:50px;
-        /* display:flex;
-        justify-content:space-around; */
-        font-size:20px;
+        font-size:16px;
         line-height:50px;
         position: relative;
+        background:#fff;
         .header_first{
             float:left;
             margin-left:20px;

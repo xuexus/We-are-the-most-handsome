@@ -81,7 +81,7 @@ class ClassifyLeft extends Component {
     }
     handleToList(item){
         if(item.id_param){
-            this.props.history.push("/goodList/"+(item.id_param.match(/\d+$/g)[0]))
+            this.props.history.push("/goodList/"+(item.id_param.match(/\d+$/g)[0])+"/"+" ")
         }else{
             this.props.history.push("/brand/"+item.target.param)
         }

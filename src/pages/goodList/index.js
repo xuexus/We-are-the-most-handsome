@@ -38,20 +38,24 @@ class GoodsList extends React.Component {
             ],
             flag:false,
             def:"默认",
-            n:0
+            n:0,
+            search:"点击搜索商品",
+            m:"",
         }
+        
     }
     render() {
+        console.log(this.props)
         let { goodList } = this.props
-        let {num,numP,srot,flag,def,n } = this.state
+        let {num,numP,srot,flag,def,n,m } = this.state
         return (
             <GoodsListStyled>
                 {/* <BScroll> */}
                 <div className="goodsList">
                     <div className="goodsList_search">
-                        <div>
+                        <div >
                             <i></i>
-                            <p>点击搜索商品</p>
+                            <p onClick={this.handleDian.bind(this)}>{m}</p>
                         </div>
                     </div>
 
@@ -115,15 +119,28 @@ class GoodsList extends React.Component {
             </GoodsListStyled>
         )
     }
+
     componentDidMount() {
-        this.props.handleGoodList(this.props.match.params.id_param,"def_desc")
+       this.handleZhuan()
+    }
+    // 接受的值
+    handleZhuan(){
+        this.setState({
+            search:this.props.match.params.id_param,
+            m:this.props.match.params.xxs
+        },()=>{
+            this.props.handleGoodList(this.state.search,"sold_desc","keyword:"+this.state.m)
+        })
+    }
+    // 点击搜索
+    handleDian(){
+        this.props.history.push("/search")
     }
     handleSortDefault(index,flag){
         this.setState({
             flag:!flag
         })
 
-        // this.props.handleGoodList(this.props.match.params.id_param,"def_desc")
         this.handleSort(index)
     }
     handleSortSales(index){
@@ -131,7 +148,7 @@ class GoodsList extends React.Component {
             flag:false
         })
 
-        this.props.handleGoodList(this.props.match.params.id_param,"sold_desc")
+        this.props.handleGoodList(this.props.match.params.id_param,"sold_desc",this.state.m)
         this.handleSort(index)
     }
     handleSortPrice(index,n){
@@ -143,12 +160,12 @@ class GoodsList extends React.Component {
             this.setState({
                 n:1
             })
-            this.props.handleGoodList(this.props.match.params.id_param,"price_asc")
+            this.props.handleGoodList(this.props.match.params.id_param,"price_asc",this.state.m)
         }else{
             this.setState({
                 n:0
             })
-            this.props.handleGoodList(this.props.match.params.id_param,"price_desc")
+            this.props.handleGoodList(this.props.match.params.id_param,"price_desc",this.state.m)
         }
         this.handleSort(index)
     }
@@ -161,7 +178,7 @@ class GoodsList extends React.Component {
             flag:false,
             numP:index
         })
-        this.props.handleGoodList(this.props.match.params.id_param,this.state.srot[index].path)
+        this.props.handleGoodList(this.props.match.params.id_param,this.state.srot[index].path,this.state.m)
     }
 
 

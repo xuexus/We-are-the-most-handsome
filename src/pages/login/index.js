@@ -11,10 +11,11 @@ class Login extends Component {
         this.state={
             valone:"",
             valtwo:"",
+            color:false
         }
     }
     render() {
-        let {valone,valtwo}=this.state
+        let {valone,valtwo,color}=this.state
         return (
             <Fourth>
                 <div className="login"> </div>
@@ -26,7 +27,7 @@ class Login extends Component {
                             <input type="text" placeholder="请输入密码" value={valtwo} onChange={this.props.handleValtwo.bind(this)}/>
                         </div>
                         <div className="denglu">
-                            <i onClick={this.props.handleYanzheng.bind(this)}>登录</i>
+                            <i onClick={this.props.handleYanzheng.bind(this)} className={color?"i":"I"}>登录</i>
                         </div>
                         <h2 className="method">
                             <a href="#">短信验证码登录</a>
@@ -47,17 +48,6 @@ class Login extends Component {
                 </div>
             </Fourth>
         )
-    }
-    componentDidUpdate(){
-        console.log(this.props)
-        if (this.props.date.data) {
-            if (this.props.date.data.data.status === 1) {
-                alert(this.props.date.data.data.info);
-                this.props.history.push("/main")
-            } else {
-                alert(this.props.date.data.data.info);
-            }
-        }
     }
 }
 export default Login;

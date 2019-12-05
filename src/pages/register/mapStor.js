@@ -13,6 +13,15 @@ export const mapDispatchToProps = (dispatch)=>({
             username:val
         },()=>{
             // console.log(this.state.username)
+            if(this.state.username && this.state.password){
+                this.setState({
+                    color:true
+                })
+            }else{
+                this.setState({
+                    color:false
+                })
+            }
         })
     },
     handleRegistere(e){
@@ -21,11 +30,22 @@ export const mapDispatchToProps = (dispatch)=>({
             password:val
         },()=>{
             // console.log(this.state.password)
+            if(this.state.username && this.state.password){
+                this.setState({
+                    color:true
+                })
+            }else{
+                this.setState({
+                    color:false
+                })
+            }
         })
     },
-    handleChuan(){
-        dispatch(registerAsyncAction(this.state.username,this.state.password));
+    async handleChuan(e){
+        e.preventDefault();
+        let data=await dispatch(registerAsyncAction(this.state.username,this.state.password));
+        if(data===1){
+            this.props.history.push("/main")
+        }
     },
-   
-
 })

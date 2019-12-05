@@ -40,10 +40,13 @@ class ClassifyRight extends Component {
                         })
                     }
 
-                    <div className="classify_brand_all">全部</div>
+                    <div className="classify_brand_all" onClick={this.handleQuanbu.bind(this)}>全部</div>
                 </div>
             </ClassifyRightStyled>
         )
+    }
+    handleQuanbu(){
+        this.props.history.push("/quanbu")
     }
     componentDidMount() {
         if(!localStorage.getItem("classifyRight")){

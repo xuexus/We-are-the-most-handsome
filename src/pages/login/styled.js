@@ -46,10 +46,23 @@ export const Fourth = styled.div`
         }
     }
     .denglu{
-        >i{
+        >.I{
             font-style:normal;
             background: #f0f0f0;
             color: #bfbfbf;
+            width: 100%;
+            line-height: 50px;
+            margin-top: 37px;
+            border-radius: 30px;
+            display: block;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        >.i{
+            font-style:normal;
+            background: green;
+            color: #fff;
             width: 100%;
             line-height: 50px;
             margin-top: 37px;
