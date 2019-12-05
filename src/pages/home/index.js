@@ -201,7 +201,7 @@ class Homes extends Component {
                     <div className="banner">
                         <div className="banner_first">
                             <div className="banner_first_one">
-                                <img src={mes.list ? mes.list[11].data.column_images[0][0].img_url : []} alt="" />
+                                <img src={mes.list ? mes.list[11].data.images[0].img_url : []} alt="" />
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ class Homes extends Component {
                         <img src={mes.list ? mes.list[14].data.column_images[0][0].img_url : []} alt="" />
                     </div>
                     <div className="comin">
-                        <img src={mes.list ? mes.list[15].data.column_images[0][0].img_url : []} alt="" />
+                        <img src={mes.list ? mes.list[15].data.images[0].img_url : []} alt="" />
                     </div>
                     {/* 潮品好物 */}
                     <div className="product">
