@@ -10,11 +10,12 @@ class Cart extends Component {
             selected: true,
             Sprice:"",
             Scount:"",
+            goPrice:true
         }
         
 
         // this.state.building=window.localStorage.getItem("CART");
-        console.log(this.state.building)
+        // console.log(this.state.building)
         if(!window.localStorage.getItem("CART")){
             this.state.building=[[]]
         }else{
@@ -22,11 +23,11 @@ class Cart extends Component {
             this.state.building[0].forEach(item => {
                 item.flag = true;
             })
-            console.log(this.state.building)
+            // console.log(this.state.building)
         }
     }
     render() {
-        let { building, selected, Sprice, Scount} = this.state
+        let { building, selected, Sprice, Scount , goPrice } = this.state
         return (
             <Section>
                 <Header title="购物车" />
@@ -81,7 +82,7 @@ class Cart extends Component {
                             <span>{Sprice}</span>
                         </label>
                     </div>
-                    <div className="footer_second">
+                    <div className={goPrice?"goPrice footer_second":"footer_second"}>
                         <span>去结算(</span>
                         <span>{Scount}</span>
                         <span>)</span>
@@ -94,7 +95,7 @@ class Cart extends Component {
       this.handlePrice()
     }
     handleReducer(index){
-       console.log(index)
+    //    console.log(index)
         if(this.state.building[0][index].counter<=1){
 
             this.state.building[0][index].counter = 1;
@@ -113,8 +114,14 @@ class Cart extends Component {
         this.handlePrice()
     }
     handleShanChu(index){
-        console.log(this.state.building[0][index].id)
-        // window.localStorage.removeItem("CART",JSON.stringify(this.state.building[0][index].id))
+        for (var i = 0; i < this.state.building[0].length; i++) {
+            if(i===index){
+                this.state.building[0].splice(i, 1)
+                window.localStorage.setItem("CART",JSON.stringify(this.state.building[0]))
+                break;
+            }
+        }
+        this.handlePrice()
     }
     handleCounter(){
        
@@ -125,6 +132,18 @@ class Cart extends Component {
             if (this.state.building[0][i].flag) {
                 scount += this.state.building[0][i].counter;
                 sprice += this.state.building[0][i].counter * (this.state.building[0][i].price * 10) / 10
+            }
+        }
+        for (var i = 0; i < this.state.building[0].length; i++) {
+            if (this.state.building[0][i].flag) {
+                this.setState({
+                    goPrice:true
+                })
+                break;
+            }else{
+                this.setState({
+                    goPrice:false
+                })
             }
         }
         this.setState({

@@ -7,7 +7,7 @@ export const mapStateToProps = (state)=>({
 
 
 export const mapDispatchToProps = (dispatch)=>({
-    handleAppraisal(){
-        dispatch(AppraisalAction())
+    handleAppraisal(param,pet_type){
+        dispatch(AppraisalAction(param,pet_type))
     }
 })

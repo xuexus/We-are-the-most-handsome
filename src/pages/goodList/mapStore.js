@@ -7,7 +7,7 @@ export const mapStateToProps = (state)=>({
 
 
 export const mapDispatchToProps = (dispatch)=>({
-    handleGoodList(cateid,desc){
-        dispatch(GoodListAsync(cateid,desc))
+    handleGoodList(cateid,desc,page){
+        dispatch(GoodListAsync(cateid,desc,page))
     }
 })

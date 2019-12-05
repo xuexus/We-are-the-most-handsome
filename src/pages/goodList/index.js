@@ -4,6 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux";
 import BScroll from "@/common/bscroll"
+import Header from "@/components/header"
 
 @connect(mapStateToProps, mapDispatchToProps)
 @withRouter
@@ -38,7 +39,9 @@ class GoodsList extends React.Component {
             ],
             flag: false,
             def: "默认",
-            n: 0
+            n: 0,
+            page:1,
+            desc:"def_desc"
         }
     }
     render() {
@@ -46,8 +49,9 @@ class GoodsList extends React.Component {
         let { num, numP, srot, flag, def, n } = this.state
         return (
             <GoodsListStyled>
-                <BScroll>
+                <BScroll ref="scroll">
                     <div className="goodsList">
+                    <Header title="商品列表"/>
                         <div className="goodsList_search">
                             <div>
                                 <i></i>
@@ -88,9 +92,9 @@ class GoodsList extends React.Component {
 
                         <div className="goodsList_content">
                             {
-                                goodList.map(item => {
+                                goodList.map((item,index) => {
                                     return (
-                                        <div className="goodsList_content_list" key={item.gid} onClick={this.handleGoodList.bind(this, item)}>
+                                        <div className="goodsList_content_list" key={index} onClick={this.handleGoodList.bind(this, item)}>
                                             <img src={item.photo} alt="" />
                                             <div className="goodsList_list_right">
                                                 <h2>{item.subject}</h2>
@@ -116,22 +120,34 @@ class GoodsList extends React.Component {
         )
     }
     componentDidMount() {
-        this.props.handleGoodList(this.props.match.params.id_param, "def_desc")
+        this.props.handleGoodList(this.props.match.params.id_param, "def_desc",1)
+        this.state.page++
+        this.refs.scroll.handlepullingUp(()=>{
+            this.props.handleGoodList(this.props.match.params.id_param, "def_desc",this.state.page)
+            this.state.page++
+            
+        })
     }
+    componentWillUpdate(){
+        this.refs.scroll.handlefinishPullUp();
+    }
+
+
     handleSortDefault(index, flag) {
         this.setState({
-            flag: !flag
+            flag: !flag,
         })
-
-        // this.props.handleGoodList(this.props.match.params.id_param,"def_desc")
+        
         this.handleSort(index)
     }
     handleSortSales(index) {
+        console.log(11111)
         this.setState({
-            flag: false
+            flag: false,
+            desc:"sold_desc"
         })
 
-        this.props.handleGoodList(this.props.match.params.id_param, "sold_desc")
+        this.props.handleGoodList(this.props.match.params.id_param, "sold_desc",1)
         this.handleSort(index)
     }
     handleSortPrice(index, n) {
@@ -141,14 +157,16 @@ class GoodsList extends React.Component {
 
         if (n === 0) {
             this.setState({
-                n: 1
+                n: 1,
+                desc:"price_asc"
             })
-            this.props.handleGoodList(this.props.match.params.id_param, "price_asc")
+            this.props.handleGoodList(this.props.match.params.id_param, "price_asc",1)
         } else {
             this.setState({
-                n: 0
+                n: 0,
+                desc:"price_desc"
             })
-            this.props.handleGoodList(this.props.match.params.id_param, "price_desc")
+            this.props.handleGoodList(this.props.match.params.id_param, "price_desc",1)
         }
         this.handleSort(index)
     }
@@ -159,9 +177,10 @@ class GoodsList extends React.Component {
         this.setState({
             def: con,
             flag: false,
-            numP: index
+            numP: index,
+            desc:this.state.srot[index].path
         })
-        this.props.handleGoodList(this.props.match.params.id_param, this.state.srot[index].path)
+        this.props.handleGoodList(this.props.match.params.id_param, this.state.srot[index].path,1)
     }
 
 

@@ -7,7 +7,7 @@ export const mapStateToProps = (state)=>({
 
 
 export const mapDispatchToProps = (dispatch)=>({
-    handleVideo(){
-        dispatch(VideoAction())
+    handleVideo(param,pet_type){
+        dispatch(VideoAction(param,pet_type))
     }
 })

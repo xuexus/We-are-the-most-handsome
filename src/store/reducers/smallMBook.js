@@ -17,6 +17,20 @@ export default handleActions({
     [RecommendType]:(state,action)=>{
         let RecommendTypeDefault = JSON.parse(JSON.stringify(state))
         RecommendTypeDefault.list = action.payload
+        var storage = JSON.parse(localStorage.getItem("Recommend"))
+        for(var n=0;n<storage.length;n++){
+            for(var i=0;i<RecommendTypeDefault.list.length;i++){
+                if(storage[n].id===RecommendTypeDefault.list[i].data.id){
+                    RecommendTypeDefault.list[i].flag=true
+                }else{
+                    RecommendTypeDefault.list[i].flag=false
+                }
+            }
+        }
+        
+
+
+
         return RecommendTypeDefault
     },
     [AppraisalType]:(state,action)=>{

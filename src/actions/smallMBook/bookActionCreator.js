@@ -12,11 +12,11 @@ export const FiveAsyncAction =()=>{
     }
 }
 
-export const RecommendAction = ()=>{
+export const RecommendAction = (param,pet_type)=>{
     var FiveAction = createAction(RecommendType,(data)=>data)
 
     return async (dispatch)=>{
-        let data = await FiveAsyncActionApi()
+        let data = await FiveAsyncActionApi(param,pet_type)
         var list=[]
         data.data.list.map(item=>{
             if(item.type===1){
@@ -27,21 +27,21 @@ export const RecommendAction = ()=>{
     }
 }
 
-export const AppraisalAction = ()=>{
+export const AppraisalAction = (param,pet_type)=>{
     var Appraisal = createAction(AppraisalType,(data)=>data)
 
     return async (dispatch)=>{
-        let data = await FiveAsyncActionApi(1)
+        let data = await FiveAsyncActionApi(param,pet_type)
         dispatch(Appraisal(data.data.list))
     }
 }
 
 
-export const VideoAction = ()=>{
+export const VideoAction = (param,pet_type)=>{
     var Video = createAction(VideoType,(data)=>data)
 
     return async (dispatch)=>{
-        let data = await FiveAsyncActionApi(4)
+        let data = await FiveAsyncActionApi(param,pet_type)
         dispatch(Video(data.data.list))
     }
 }

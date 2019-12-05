@@ -164,7 +164,7 @@ class Homes extends Component {
                         <img src={mes.list ? mes.list[5].data.column_images[0][0].img_url : []} />
                     </div>
                     <div className="moudle_first">
-                        <img src={mes.list ? mes.list[6].data.column_images[0][0].img_url : []} alt="" />
+                        <img src={mes.list ? mes.list[6].data.images[0].img_url : []} alt="" />
                     </div>
                     {/* 精选活动 */}
                     <div className="meter">
@@ -238,7 +238,7 @@ class Homes extends Component {
                                     return <ul key={index} className="shoop_first_one">
                                         {
                                             item.data.goods.map((items, indexs) => {
-                                                return <li key={indexs} className="shoop_first_one_one">
+                                                return <li key={indexs} className="shoop_first_one_one" onClick={this.handleHomeList.bind(this,items)}>
                                                     <div className="list">
                                                         <img src={items.good_image.img_url} alt="" />
                                                         <div className="list_first">
@@ -292,6 +292,9 @@ class Homes extends Component {
                 this.state.data.push(item.img_url)
             })
         }
+    }
+    handleHomeList(items){
+        this.props.history.push("/details/"+items.gid+"/"+items.sale_price+"/"+" ")
     }
 }
 export default Homes;

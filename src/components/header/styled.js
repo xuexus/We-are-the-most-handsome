@@ -7,7 +7,9 @@ export  const HeaderContainer=styled.div`
         justify-content:space-around; */
         font-size:20px;
         line-height:50px;
-        position: relative;
+        position:absolute;
+        top:0;
+        left:0;
         .header_first{
             float:left;
             margin-left:20px;

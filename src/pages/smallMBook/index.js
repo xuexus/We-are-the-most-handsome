@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {SmallMBookStyled} from "./styled";
+import Header from '../../components/header';
+
 
 class SmallMBook extends Component {
     constructor(){
@@ -29,12 +31,13 @@ class SmallMBook extends Component {
         let {fore,num} = this.state;
         return (
             <SmallMBookStyled>
+                <Header title="小萌书"/>
                 <div className="SmallMBook">
                     <div className="SmallMBook_nav">
                         <div className="SmallMBook_nav_search">
                             <div className="SmallMBook_search_left">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAwCAYAAACScGMWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjIyOUI2MjY4NEVDQjExRTlBRERERkUzQ0E1MTkzNTgxIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjIyOUI2MjY5NEVDQjExRTlBRERERkUzQ0E1MTkzNTgxIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjI5QjYyNjY0RUNCMTFFOUFERERGRTNDQTUxOTM1ODEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjI5QjYyNjc0RUNCMTFFOUFERERGRTNDQTUxOTM1ODEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5PbGe4AAAFjElEQVR42rxZaWxVRRS+vaWIWsAIL2CNcYlIVKpoqxFEFlfANSrYaEgU16aCC+KSRrEKGqoRgcQYqmjEtYsGxcYa+AEVreVpJUqLIhrXxgDRUmxNra3fMd+Yk8m78+b28XqSL9w7nTvzvTNnHXKKioqCAcgI4HxgOlAInAQMB0YCncB+YDfwCbAR2Ap0p1oomUxGbjIkJqkpQBlwJXBoxJzhxNHAVOAB4C9gCVAZZ7PQc14hNdAIlDiIRckw4O64x5NOc7nAw0B5irnNwAdAE7AT2AMcIPGxwHjgHOBS4DSg6mCSOxKoBWaosR5gLbCShFKJ2Nb3hJB/NBigRJErABqACWqsgfa2OxgkyUnhrSNpW4V87wXuB54F+rPA4RqawCp47gGXQ+QAbylickRXAyuyRGwiTWcZUFNcXBy6yC0GLuHzP/TM97J4cl3cR2QmcF8UueOBCvX+EPBuls3qG2vPCmjvxFTknmY8EtnE93QyCrgL2ADsAPbSS+sZ1xIeayxjBjHx8EnbIU4HWmhzfzMu7Uzj5Q8y+uenObangKV0rJTpC9o6FY/bGVfFtidgvNVo7g4SE3k1DTHx5g+Bx9MQEzmMaet94IioSSAiWn9TOWWZOdahwFw19xnHZjL3bSswfwHcDsivHw2cwvfP1ZyLgXeAPMfaK9VzCbSZJ+QmMxuYjb5yLFDOasR4s8Q/sYs1QCuwD2jjezHt0XjjdFe2gPa2qRMTPueGlhbqHcSOslz9HtpTX8R8sZ1VQKkauxc4xrHHBvU8TcidoQYaHR+W0YYCViirPcNFlQpJ4o13OuZ+rJ7PEnLj1ECr48PL1PMTMeOZtuPLHfPa1PMJQm6MGvgp4qM8GrxJaVtikvuIFXLAPBpVD+r9C0JWrQE/7ncEW1PB/KyM3Fdk/i8q8CcinOJP9ZofqizR51i81yoOMi3PfH5cbsiUY5qW3IiJ+xjtRY4FDo9JLJ/fmYL1t1STENtGqNe9oVK3aOQ4R1j4VNnfVTHJzVIBOBmVytQP+M/+hNzXauBkxwa16vkR4BBPYkMZvI3UOObqyvu7kAnfyHmOD1+iMwTsU6s87E/+/hwLC2Meax3zJ+sGKrTCwkWOD7uZrozMoxYKHBmlDrjZyir7HXvM1AFZPGgb27oEs8V466i1vAFMAhao+n82sB7YTM2M4glcYVUt0oOsi2IFZzgb/5hCU5y0aQjduo5lk8iNrIKjZCHQziIxhwG1hIhypiWs6VwyTz3XIeb1mhj3vPrDbR51mlSr09hQu0Qa7wtY+/U7tDaaSjGyTgfG7bx0mcRypZQVh0saOV9M4UKGoQRts5UFaYunRy9UCmmC1rbafetsVqwif9Aj9wxC7ywOtUtVPHNBrsZucOqZoAOW1EuDwZFKRSyp46ndty5See9WHlc2RcqnG/T+0Fp/FLlmBk0TQF/2bO8GImNYzv/vBCC2Jd39XDl7z4AXgLVMQQdTctnljeX7r+w30l4edjJm9fB9qmeDHUeWK5ORY5wPrf3ue7PZzKbZyAKrUclESmnbRh4DsYa4164rrNvI1Y4s4CvXWo1RvXVX4k0uYKe0UdnJK8CcARKTS+7XVEH7JXC99s645Hq4qC40JfnPj0nsOqBaOda3vGrrcH3kc5vexYWSSoMvsOD0EfHC1xWxXXSG9nQf+l71d3DBRhUDK1g4DnOEi0qWSmafHSwYfvDZNIxxNB3U4Ho1dhMLhnHW3AQT/2I19hmJtftuGMa0nW4WmLqDn8gjn6NK/RZ14WPuQGawGA2yRc70nIuYE7tUW1nNO5FNzCwmwC6nU3XG3SjMIGaJkU+hgetEnqfKrhIG876BbJAJuYDHdybwojW+mR1XdSaLZ0pORP5j4xYWq23s0MTefsx04X8FGADFRkw9Am9VzQAAAABJRU5ErkJggg==" alt=""/>
-                                <span>狗狗</span>
+                                <span onClick={this.handleDc.bind(this)}>{this.props.location.search==="?dc=cat"?"猫猫":"狗狗"}</span>
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAAAJ0lEQVQY02M0Njb+z4AEzp49y4jMR5dnYiAR0F4DI7oAIT8NQj8AANUsCadG+0h2AAAAAElFTkSuQmCC" alt=""/>
                             </div>
                             <div className="SmallMBook_search_center">
@@ -64,7 +67,17 @@ class SmallMBook extends Component {
         )
     }
     handleFore(path,index){
-       this.props.history.push(path)
+       this.props.history.push(path+this.props.location.search)
+    }
+    handleDc(){
+        if(this.props.location.search==="?dc=cat"){
+            this.props.history.push("/smallMBook/recommend?dc=dog")
+            window.location.reload(true)
+        }else{
+            this.props.history.push("/smallMBook/recommend?dc=cat")
+            window.location.reload(true)
+        }
+        
     }
 }
 export default SmallMBook;
