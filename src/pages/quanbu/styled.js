@@ -18,6 +18,7 @@ export const Sixth = styled.div`
         width:100%;
         height:100%;
         box-sizing: border-box;
+        padding-top:50px;
     }
     .brand_first{
         position: fixed;
@@ -82,7 +83,6 @@ export const Sixth = styled.div`
         max-width: 150px;
         height: 50px;
         border: 1px solid #f3f4f5;
-        padding-top: 50px;
         position: relative;
         float: left;
         >img{
